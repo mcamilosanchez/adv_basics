@@ -40,8 +40,8 @@ class _QuizState extends State<Quiz> {
 
   void restartQuiz() {
     setState(() {
-      activeScreen = 'start-screen';
       selectedAnswers.length = 0;
+      activeScreen = 'questions-screen';
     });
   }
 
@@ -80,7 +80,9 @@ class _QuizState extends State<Quiz> {
 
     if (activeScreen == 'results-screen') {
       screenWidget = ResultsScreen(
-          chosenAnswers: selectedAnswers, restartQuiz: restartQuiz);
+        chosenAnswers: selectedAnswers,
+        restartQuiz: restartQuiz,
+      );
     }
 
     return MaterialApp(

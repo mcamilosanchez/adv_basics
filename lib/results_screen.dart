@@ -4,8 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ResultsScreen extends StatelessWidget {
-  const ResultsScreen(
-      {super.key, required this.chosenAnswers, required this.restartQuiz});
+  const ResultsScreen({
+    super.key,
+    required this.chosenAnswers,
+    required this.restartQuiz,
+  });
 
   final List<String> chosenAnswers;
 
@@ -28,7 +31,10 @@ class ResultsScreen extends StatelessWidget {
         'correct_answer': questions[i].answers[0],
         /* Recordar que era importante no barajar la lista de respuestas 
         original, ya que la primera(posición cero) respuesta es la correcta. */
-        'user_answer': chosenAnswers[i]
+        'user_answer': chosenAnswers[i],
+        /* is_correct, es un condicional que me permite saber si la respuesta 
+        es correcta (true) o incorrecta (false)*/
+        // 'is_correct': questions[i].answers[0] == chosenAnswers[i]
       });
     }
 
@@ -62,8 +68,9 @@ class ResultsScreen extends StatelessWidget {
             Text(
               'You answered $numCorrectQuestions out of $numTotalQuestions questions correctly!',
               style: GoogleFonts.lato(
-                color: const Color.fromARGB(255, 255, 195, 255),
-                fontSize: 18,
+                color: const Color.fromARGB(255, 230, 200, 253),
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
               ),
               textAlign: TextAlign.center,
             ),
@@ -78,7 +85,7 @@ class ResultsScreen extends StatelessWidget {
               style: TextButton.styleFrom(
                 foregroundColor: Colors.white,
               ),
-              icon: const Icon(Icons.replay_outlined),
+              icon: const Icon(Icons.refresh),
               label: const Text('Restart Quiz!'),
             )
           ],
