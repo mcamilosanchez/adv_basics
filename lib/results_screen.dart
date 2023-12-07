@@ -14,6 +14,18 @@ class ResultsScreen extends StatelessWidget {
 
   final void Function() restartQuiz;
 
+  /* VIDEO #88. Beyond the Basics: Optional, Important Dart Features (clases 
+  Privadas, getters y arrow functions):
+  El siguiente método, como lo podemos observar, no toma valores de entrada, 
+  parámetros o argumentos. Al final, sólo produce algunos datos basados en 
+  propiedades (choseAnswers, questions...) de la clase. En este caso, se puede 
+  usar un GETTER.
+  En ves de un usar la palabra getSummaryData(), se cambiaría por: 
+  get summaryData.
+  Esto se puede aplicar (GETTER) cuando tengo un método que toma las respuestas 
+  de otras propiedades de la clase y luego deriva algunos datos basados en esa 
+  propiedad*/
+
   List<Map<String, Object>> getSummaryData() {
     /* VIDEO #80. Introducing Maps & "for" Loops: This is a method, el cual 
     quiero que me devuelva una lista de valores. Recordar que MAP es una 
@@ -55,6 +67,17 @@ class ResultsScreen extends StatelessWidget {
     final numCorrectQuestions = summaryData.where((data) {
       return data['user_answer'] == data['correct_answer'];
       /* Si estos dos valores son iguales, devolverá TRUE */
+      /* VIDEO #88. Beyond the Basics: Optional, Important Dart Features (clases 
+      Privadas, getters y arrow functions):
+      Esta es un Arrow Function, es una función que toma alguna entrada y 
+      luego en su cuerpo devuelve inmediatamente un valor, especialmente cuando 
+      se utilizan esos métodos de lista como where o map. El cuerpo de la 
+      función no debe ser muy complejo, puede tener una única sentencia return 
+      en la que devuelves algún valor derivado, quedaría de la siguiente 
+      manera:
+       summaryData.where((data) => data['user_answer'] == data['correct_answer']
+       Se quita el return y las llaves.
+      */
     }).length;
 
     return SizedBox(

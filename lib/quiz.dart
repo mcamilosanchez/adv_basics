@@ -4,6 +4,8 @@ import 'package:adv_basics/results_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:adv_basics/start_screen.dart';
 
+// Esta es una clase pública, el objetivo de esta clase es administrar todas
+// las pantallas y también los estados
 class Quiz extends StatefulWidget {
   const Quiz({super.key});
 
@@ -13,6 +15,9 @@ class Quiz extends StatefulWidget {
   }
 }
 
+/* Recordar que el guión bajo indica que la clase es privada, por lo cual sólo 
+ debe ser utilizada dentro de este archivo. Esto no solo se aplicar a clases, si
+ no también a variables. */
 class _QuizState extends State<Quiz> {
   // Ver videos 60 y 61
   /* Podemos almacenar Widgets en variables, es permitido ya que los Widgets son
@@ -102,6 +107,14 @@ class _QuizState extends State<Quiz> {
           una expresión terniaria, permite comprobar una condición y luego dar 
           un valor si se cumple la condición y un valor alternativo si no se 
           cumple: */
+
+          /* Aquí abajo se puede aplicar una expresión terniaria, en ves de 
+          child: screenWidget se escribe lo siguiente:
+          
+          child: activeScreen == 'start-screen'
+              ? StartScreen(switchScreen)
+              : const QuestionsScreen(),
+          */
           child: screenWidget,
         ),
       ),
